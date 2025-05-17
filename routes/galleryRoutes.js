@@ -4,7 +4,8 @@ import { uploadGalleryImage, getGalleryImages } from '../controllers/galleryCont
 import { requireAuth } from '../utils/jwt.js';
 
 const router = express.Router();
-const upload = multer({ dest: 'uploads/' });
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
 // Update the GET route to support pagination
 router.get('/', requireAuth, getGalleryImages);

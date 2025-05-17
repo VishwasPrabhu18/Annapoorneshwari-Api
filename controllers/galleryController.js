@@ -13,7 +13,7 @@ export const uploadGalleryImage = async (req, res) => {
       });
     }
 
-    const result = await uploadToCloudinary(req.file);
+    const result = await uploadToCloudinary(req.file.buffer);
 
     const imageDoc = {
       filename: req.file.originalname,
