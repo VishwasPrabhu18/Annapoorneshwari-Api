@@ -36,7 +36,7 @@ export const requireAuth = (req, res, next) => {
   }
 
   const token = authHeader.split(' ')[1];
-
+ 
   try {
     const { decoded, valid, expired } = verifyToken(token);
     
