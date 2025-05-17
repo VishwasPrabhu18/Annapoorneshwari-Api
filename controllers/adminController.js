@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import Admins from '../models/adminModel.js';
-import { createTokens } from '../utils/jwt.js';
+import { createTokens, verifyToken } from '../utils/jwt.js';
 
 export const registerAdmin = async (req, res) => {
   try {
@@ -89,7 +89,7 @@ export const refreshToken = async (req, res) => {
       });
     }
 
-    const { valid, expired, decoded } = verifyRefreshToken(refresh_token);
+    const { valid, expired, decoded } = verifyToken(refresh_token);
 
     if (!valid) {
       return res.status(401).json({
