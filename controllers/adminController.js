@@ -30,10 +30,12 @@ export const registerAdmin = async (req, res) => {
       fullName: `${firstName} ${lastName}`
     });
 
+    const token = createTokens(admin._id, admin.email);
+
     res.status(201).json({
       success: true,
-      message: 'Admin registered successfully',
-      adminId: admin._id
+      access_token: token,
+      token_type: 'bearer',
     });
   } catch (error) {
     res.status(500).json({

@@ -52,7 +52,8 @@ export const requireAuth = (req, res, next) => {
   } catch (error) {
     return res.status(401).json({
       success: false,
-      message: 'Invalid token'
+      message: 'Invalid token',
+      error: error.message
     });
   }
 };
