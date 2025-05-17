@@ -67,7 +67,7 @@ export const loginAdmin = async (req, res) => {
 
     res.json({
       success: true,
-      token,
+      access_token: token,
       token_type: 'bearer',
     });
   } catch (error) {
