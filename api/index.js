@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import adminRoutes from '../routes/adminRoutes.js';
 import galleryRoutes from '../routes/galleryRoutes.js';
-import eventRoutes from './routes/eventRoutes.js';
+import eventRoutes from '../routes/eventRoutes.js';
 
 dotenv.config();
 
