@@ -77,3 +77,36 @@ export const getGalleryImages = async (req, res) => {
     });
   }
 };
+
+export const getRecentImages = async (req, res) => {
+  try {
+    let count = parseInt(req.params.count);
+
+    if (count <= 0) {
+      return res.status(400).json({
+        success: false,
+        message: 'Count must be greater than 0'
+      });
+    }
+
+    // Limit maximum count to 500
+    count = count > 500 ? 500 : count;
+
+    const recentImages = await Gallery.find()
+      .sort({ createdAt: -1 })
+      .limit(count);
+
+    res.json({
+      success: true,
+      data: {
+        count: recentImages.length,
+        items: recentImages
+      }
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: `Failed to fetch recent images: ${error.message}`
+    });
+  }
+};

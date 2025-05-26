@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import adminRoutes from '../routes/adminRoutes.js';
 import galleryRoutes from '../routes/galleryRoutes.js';
+import eventRoutes from './routes/eventRoutes.js';
 
 dotenv.config();
 
@@ -30,6 +31,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/v1/admin', adminRoutes);
 app.use('/api/v1/gallery', galleryRoutes);
+app.use("/api/v1/events", eventRoutes);
 
 // Export handler
 export default async function handler(req, res) {

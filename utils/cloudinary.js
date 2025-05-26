@@ -1,4 +1,8 @@
 import { v2 as cloudinary } from 'cloudinary';
+import { Readable } from "stream";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -27,7 +31,7 @@ export const uploadToCloudinary = (fileBuffer) => {
     );
 
     const readable = new Readable();
-    readable._read = () => {}; // _read is required but you can noop it
+    readable._read = () => { }; // _read is required but you can noop it
     readable.push(fileBuffer);
     readable.push(null); // End of stream
     readable.pipe(uploadStream);

@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import adminRoutes from './routes/adminRoutes.js';
 import galleryRoutes from './routes/galleryRoutes.js';
+import eventRoutes from './routes/eventRoutes.js';
 
 dotenv.config();
 
@@ -28,6 +29,7 @@ app.get('/', (req, res) => {
 // Routes
 app.use('/api/v1/admin', adminRoutes);
 app.use('/api/v1/gallery', galleryRoutes);
+app.use("/api/v1/events", eventRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
